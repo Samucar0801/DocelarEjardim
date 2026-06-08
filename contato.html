@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato — Doce Lar e Jardim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body data-page="contato">
+  <div id="site-header"></div>
+  <main>
+    <section class="page-hero">
+      <div class="wrap"><span class="eyebrow">Estamos aqui</span><h1>Fale com a <em>gente</em></h1><p>Dúvida sobre um produto, seu pedido ou uma planta? A nossa equipe responde com carinho.</p></div>
+    </section>
+
+    <section class="conteudo-pg" style="max-width:1100px">
+      <div class="contato-grid">
+        <div>
+          <a href="#" class="canal" id="zap-link">
+            <div class="ic" style="background:#e7f3ea;color:#1b8a4b"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-1.6-.6-3.4-1.9-4.6-3.6-.6-.8-1-1.7-1-2.6 0-1 .5-1.5.7-1.7.2-.2.4-.2.6-.2h.4c.2 0 .4 0 .6.5l.7 1.6c.1.2 0 .4-.1.6l-.4.5c-.1.1-.2.3-.1.5.3.6.8 1.2 1.3 1.6.5.4 1 .6 1.3.8.2.1.4 0 .5-.1l.6-.7c.2-.2.3-.2.6-.1l1.5.7c.2.1.4.2.4.3.1.2.1.5 0 .8Z"/></svg></div>
+            <div><b>WhatsApp</b><span>Resposta rápida no horário comercial</span></div>
+          </a>
+          <a href="#" class="canal" id="email-link">
+            <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+            <div><b>E-mail</b><span id="email-txt">—</span></div>
+          </a>
+          <a href="#" class="canal" id="insta-link">
+            <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+            <div><b>Instagram</b><span id="insta-txt">—</span></div>
+          </a>
+          <div class="canal">
+            <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-6 8-12a8 8 0 1 0-16 0c0 6 8 12 8 12Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><b>Onde estamos</b><span id="cidade-txt">—</span></div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h2 style="font-family:'Fraunces';font-size:1.5rem;margin-bottom:14px">Envie uma mensagem</h2>
+          <div class="campo"><label>Seu nome</label><input type="text" id="c-nome" placeholder="Como podemos te chamar?"></div>
+          <div class="campo"><label>Mensagem</label><textarea id="c-msg" placeholder="Conte como podemos ajudar..."></textarea></div>
+          <button class="btn btn-primario btn-bloco" onclick="enviarContato()">Enviar pelo WhatsApp</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/dados.js"></script>
+  <script src="js/loja.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+      document.getElementById("zap-link").href = `https://wa.me/${CONFIG.whatsapp}`;
+      document.getElementById("email-link").href = `mailto:${CONFIG.email}`;
+      document.getElementById("email-txt").textContent = CONFIG.email;
+      document.getElementById("insta-link").href = `https://instagram.com/${CONFIG.instagram}`;
+      document.getElementById("insta-txt").textContent = "@"+CONFIG.instagram;
+      document.getElementById("cidade-txt").textContent = CONFIG.cidade;
+    });
+    function enviarContato(){
+      const nome = document.getElementById("c-nome").value || "Olá";
+      const msg = document.getElementById("c-msg").value || "Gostaria de mais informações.";
+      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(nome + ": " + msg)}`, "_blank");
+    }
+  </script>
+</body>
+</html>
